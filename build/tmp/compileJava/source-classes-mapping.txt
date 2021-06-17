@@ -1,0 +1,94 @@
+hyperquiz/exceptions/EntityCreationException.java
+ hyperquiz.exceptions.EntityCreationException
+hyperquiz/dao/QuizResultRepository.java
+ hyperquiz.dao.QuizResultRepository
+hyperquiz/exceptions/InvalidGenderException.java
+ hyperquiz.exceptions.InvalidGenderException
+hyperquiz/dao/impl/LongKeyGenerator.java
+ hyperquiz.dao.impl.LongKeyGenerator
+hyperquiz/dao/impl/QuizRepositoryImpl.java
+ hyperquiz.dao.impl.QuizRepositoryImpl
+hyperquiz/model/Gender.java
+ hyperquiz.model.Gender
+hyperquiz/exceptions/EntityUpdateException.java
+ hyperquiz.exceptions.EntityUpdateException
+hyperquiz/model/Rank.java
+ hyperquiz.model.Rank
+hyperquiz/dao/Repository.java
+ hyperquiz.dao.Repository
+hyperquiz/exceptions/LoginFailException.java
+ hyperquiz.exceptions.LoginFailException
+hyperquiz/model/Identifiable.java
+ hyperquiz.model.Identifiable
+hyperquiz/dto/ErrorResponse.java
+ hyperquiz.dto.ErrorResponse
+hyperquiz/dao/QuizRepository.java
+ hyperquiz.dao.QuizRepository
+hyperquiz/dao/impl/RepositoryMemoryImpl.java
+ hyperquiz.dao.impl.RepositoryMemoryImpl
+hyperquiz/model/AbstractEntity.java
+ hyperquiz.model.AbstractEntity
+hyperquiz/dao/UserRepository.java
+ hyperquiz.dao.UserRepository
+hyperquiz/util/Alignment.java
+ hyperquiz.util.Alignment
+hyperquiz/dao/impl/QuizResultRepositoryImpl.java
+ hyperquiz.dao.impl.QuizResultRepositoryImpl
+hyperquiz/Main.java
+ hyperquiz.Main
+hyperquiz/exceptions/EntityAlreadyExistsException.java
+ hyperquiz.exceptions.EntityAlreadyExistsException
+hyperquiz/dao/KeyGenerator.java
+ hyperquiz.dao.KeyGenerator
+hyperquiz/SpringBoot.java
+ hyperquiz.SpringBoot
+hyperquiz/model/Role.java
+ hyperquiz.model.Role
+hyperquiz/util/PrintUtil.java
+ hyperquiz.util.PrintUtil
+ hyperquiz.util.PrintUtil$1
+ hyperquiz.util.PrintUtil$ColumnDescriptor
+hyperquiz/exceptions/EntityDataInvalidException.java
+ hyperquiz.exceptions.EntityDataInvalidException
+hyperquiz/model/Administrators.java
+ hyperquiz.model.Administrators
+hyperquiz/services/impl/UserServiceImpl.java
+ hyperquiz.services.impl.UserServiceImpl
+hyperquiz/util/AnswerUtil.java
+ hyperquiz.util.AnswerUtil
+hyperquiz/model/Player.java
+ hyperquiz.model.Player
+hyperquiz/model/Answer.java
+ hyperquiz.model.Answer
+hyperquiz/model/QuizResult.java
+ hyperquiz.model.QuizResult
+hyperquiz/dao/impl/UserJpaRepositoryImpl.java
+ hyperquiz.dao.impl.UserJpaRepositoryImpl
+hyperquiz/model/User.java
+ hyperquiz.model.User
+hyperquiz/model/Quiz.java
+ hyperquiz.model.Quiz
+hyperquiz/util/QuestionUtil.java
+ hyperquiz.util.QuestionUtil
+hyperquiz/util/UserUtil.java
+ hyperquiz.util.UserUtil
+hyperquiz/dao/impl/UserRepositoryMemoryImpl.java
+ hyperquiz.dao.impl.UserRepositoryMemoryImpl
+hyperquiz/init/DataInitializer.java
+ hyperquiz.init.DataInitializer
+hyperquiz/web/UserController.java
+ hyperquiz.web.UserController
+hyperquiz/util/MenuUtil.java
+ hyperquiz.util.MenuUtil
+hyperquiz/util/ValidationUtil.java
+ hyperquiz.util.ValidationUtil
+hyperquiz/model/Question.java
+ hyperquiz.model.Question
+hyperquiz/util/QuizUtil.java
+ hyperquiz.util.QuizUtil
+hyperquiz/util/StreamUtil.java
+ hyperquiz.util.StreamUtil
+hyperquiz/services/UserService.java
+ hyperquiz.services.UserService
+hyperquiz/web/ErrorHandlingControllerAdvice.java
+ hyperquiz.web.ErrorHandlingControllerAdvice
