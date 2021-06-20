@@ -1,5 +1,8 @@
 package hyperquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import hyperquiz.view.View;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -10,6 +13,7 @@ public abstract class AbstractEntity<K extends Comparable<K>, V extends Identifi
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @JsonView({View.UserView.External.class, View.QuizView.External.class})
     private K id;
 
     @Column

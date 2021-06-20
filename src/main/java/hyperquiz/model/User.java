@@ -1,8 +1,11 @@
 package hyperquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import hyperquiz.view.View;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.net.URL;
@@ -12,46 +15,55 @@ import java.util.List;
 @Entity
 @Table(name="users")
 public class User extends AbstractEntity<Long,User> {
-
+    @JsonView({View.UserView.External.class,View.QuizView.External.class})
     @Column(name="username",nullable = false,unique = true)
     @Size(min=2,max=15,message="Username must be between 2 and 15 characters")
-    private String username;
+    private  String username;
 
+    @JsonView({View.UserView.External.class})
     @Column(nullable = false,unique = true)
-//    @Email
+    @Email(message = "Email not valid")
     private String email;
-
+    @JsonView(View.UserView.Internal.class)
     @Column(nullable = false)
 //    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+,.\\\\\\/;':\"-]).{8,}$")
     @Size(min=8,max=30,message="Password must be between 8 and 15 characters")
     private String password;
 
+    @JsonView(View.UserView.External.class)
     @Enumerated(EnumType.ORDINAL)
     @NotNull
     private Gender gender;
 
+    @JsonView(View.UserView.External.class)
     @Enumerated(EnumType.ORDINAL)
     private Role role=Role.PLAYER;
 
+    @JsonView(View.UserView.External.class)
     @Column
     private URL userPicture;
 
+    @JsonView(View.UserView.External.class)
     @Column
     @Size(min=20,max=300,message="Password must be between 8 and 15 characters")
     private String description;
 
+    @JsonView(View.UserView.External.class)
     @Column
     @Size(max=512)
     private String metadata;
 
+    @JsonView(View.UserView.Internal.class)
     @Column
     private boolean status;
 
+    @JsonView(View.UserView.Internal.class)
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "author")
     private List<Quiz> quizzes=new ArrayList<>();
 
     public User() {
         this.quizzes=new ArrayList<>();
+        username = null;
     }
 
     public User(Long id) {

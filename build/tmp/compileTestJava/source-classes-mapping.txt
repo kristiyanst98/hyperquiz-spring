@@ -1,4 +1,0 @@
-UserRepositoryMemoryImplTest.java
- UserRepositoryMemoryImplTest
-QuizRepositoryImplTest.java
- QuizRepositoryImplTest

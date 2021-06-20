@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -23,7 +24,7 @@ public class UserJpaRepositoryImpl implements UserRepository {
     @PersistenceContext
     EntityManager em;
 
-//    public void init(){
+    //    public void init(){
 //        emf= Persistence.createEntityManagerFactory("hyperQuizPU");
 //        em=emf.createEntityManager();
 //    }
@@ -34,11 +35,11 @@ public class UserJpaRepositoryImpl implements UserRepository {
 
     @Override
     public Optional<User> findById(Long id) throws EntityDataInvalidException {
-        Optional<User> userFound=Optional.ofNullable(em.find(User.class,id));
-        if(userFound.isPresent()){
+        Optional<User> userFound = Optional.ofNullable(em.find(User.class, id));
+        if (userFound.isPresent()) {
             return userFound;
         }
-        throw new EntityDataInvalidException("Error finding user with ID: "+id);
+        throw new EntityDataInvalidException("Error finding user with ID: " + id);
     }
 
     @Override
@@ -48,7 +49,7 @@ public class UserJpaRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User update(User entity){
+    public User update(User entity) {
         Optional<User> old = findById(entity.getId());
         if (old.isEmpty()) {
             throw new EntityNotFoundException(String.format("Entity with ID='%s' does not exist.", entity.getId()));
@@ -65,6 +66,7 @@ public class UserJpaRepositoryImpl implements UserRepository {
         }
         return userToDelete.get();
     }
+
     @Override
     public long count() {
         return (Long) em.createQuery("SELECT COUNT(u) FROM User u").getSingleResult();
@@ -81,7 +83,12 @@ public class UserJpaRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Optional<User> findByUsername(String username) {
-        return findAll().stream().filter(user -> user.getUsername().equals(username)).findFirst();
+    public User findByUsername(String username) {
+        TypedQuery<User> query = em.createQuery(
+                "SELECT u FROM User u WHERE u.username= '" + username + "'", User.class);
+        if (query.getResultList().isEmpty()) {
+            throw new EntityDataInvalidException("Error finding user with username: " + username);
         }
+        return query.getSingleResult();
     }
+}

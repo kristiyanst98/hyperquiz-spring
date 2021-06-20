@@ -58,6 +58,6 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public User findUserByUsername(String username) {
-        return ur.findByUsername(username).get();
+        return ur.findByUsername(username);
     }
 }

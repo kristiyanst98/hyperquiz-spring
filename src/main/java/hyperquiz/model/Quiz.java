@@ -1,5 +1,8 @@
 package hyperquiz.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import hyperquiz.view.View;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.net.URL;
@@ -10,26 +13,33 @@ import java.util.List;
 @Entity
 public class Quiz extends AbstractEntity<Long,Quiz> {
 
+    @JsonView(View.QuizView.External.class)
     @Column(nullable = false,unique = true)
     @Size(min=2, max=80,message = "Title must be between 2 and 80 characters")
     private String title;
 
-    @ManyToOne(optional = false)
+    @JsonView(View.QuizView.External.class)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User author;
 
+    @JsonView(View.QuizView.External.class)
     @Column
     @Size(min=20, max=150,message = "Description must be between 20 and 150 characters")
     private String description;
 
+    @JsonView(View.QuizView.Internal.class)
     @OneToMany(mappedBy = "quiz")
     private List<Question> questions=new ArrayList<>();
 
+    @JsonView(View.QuizView.External.class)
     @Column(nullable = false)
     private int expectedDuration;
 
+    @JsonView(View.QuizView.External.class)
     @Column
     private URL picture;
 
+    @JsonView(View.QuizView.External.class)
     @Column
     private String tags;
 
