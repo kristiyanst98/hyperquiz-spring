@@ -13,12 +13,12 @@ import java.util.List;
 @Entity
 public class Quiz extends AbstractEntity<Long,Quiz> {
 
-    @JsonView(View.QuizView.External.class)
+    @JsonView({View.QuizView.External.class,View.QuizResultView.External.class})
     @Column(nullable = false,unique = true)
     @Size(min=2, max=80,message = "Title must be between 2 and 80 characters")
     private String title;
 
-    @JsonView(View.QuizView.External.class)
+    @JsonView({View.QuizView.External.class})
     @ManyToOne(fetch = FetchType.EAGER)
     private User author;
 

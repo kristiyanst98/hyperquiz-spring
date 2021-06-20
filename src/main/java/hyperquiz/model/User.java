@@ -15,7 +15,7 @@ import java.util.List;
 @Entity
 @Table(name="users")
 public class User extends AbstractEntity<Long,User> {
-    @JsonView({View.UserView.External.class,View.QuizView.External.class})
+    @JsonView({View.UserView.External.class,View.QuizView.External.class,View.QuizResultView.External.class})
     @Column(name="username",nullable = false,unique = true)
     @Size(min=2,max=15,message="Username must be between 2 and 15 characters")
     private  String username;

@@ -55,7 +55,6 @@ public class QuizController {
     }
 
     @DeleteMapping(path="/{id}",produces = APPLICATION_JSON_VALUE)
-    @JsonView(View.QuizView.External.class)
     public Quiz deleteQuizByID(@PathVariable Long id){
         return qs.deleteQuizByID(id);
     }

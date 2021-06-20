@@ -20,4 +20,13 @@ public class View {
 
             }
     }
+
+    public static class QuizResultView{
+        public static interface External{
+
+        }
+        public static interface Internal extends View.QuizView.External {
+
+        }
+    }
 }

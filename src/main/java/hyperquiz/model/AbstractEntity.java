@@ -13,7 +13,7 @@ public abstract class AbstractEntity<K extends Comparable<K>, V extends Identifi
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @JsonView({View.UserView.External.class, View.QuizView.External.class})
+    @JsonView({View.UserView.External.class, View.QuizView.External.class,View.QuizResultView.External.class})
     private K id;
 
     @Column

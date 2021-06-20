@@ -6,6 +6,7 @@ import hyperquiz.exceptions.EntityCreationException;
 import hyperquiz.exceptions.EntityDataInvalidException;
 import hyperquiz.model.QuizResult;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
@@ -16,12 +17,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+@Transactional
 public class QuizResultJpaRepository implements QuizResultRepository {
-
 
     @PersistenceContext
     EntityManager em;
-
     @Override
     public List<QuizResult> findAll() {
         return em.createQuery("SELECT q FROM QuizResult AS q").getResultList();

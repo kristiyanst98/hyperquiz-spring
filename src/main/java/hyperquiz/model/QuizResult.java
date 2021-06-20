@@ -1,8 +1,12 @@
 package hyperquiz.model;
-
+import com.fasterxml.jackson.annotation.JsonView;
+import hyperquiz.view.View;
 import lombok.NonNull;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Table(name="quizresults")
 @Entity
@@ -10,10 +14,12 @@ public class QuizResult extends AbstractEntity<Long,QuizResult>{
 
     @ManyToOne
     @NonNull
+    @JsonView(View.QuizResultView.External.class)
     private User player;
 
     @ManyToOne
     @NonNull
+    @JsonView(View.QuizResultView.External.class)
     private Quiz quiz;
 
     @Transient
@@ -22,17 +28,22 @@ public class QuizResult extends AbstractEntity<Long,QuizResult>{
     public QuizResult() {
     }
 
-    public QuizResult(Player player, Quiz quiz, int score) {
+    public QuizResult(User player, Quiz quiz, int score) {
         this.player = player;
         this.quiz = quiz;
         this.score = score;
+    }
+
+    public QuizResult(@NonNull User player, @NonNull Quiz quiz) {
+        this.player = player;
+        this.quiz = quiz;
     }
 
     public User getPlayer() {
         return player;
     }
 
-    public void setPlayer(Player player) {
+    public void setPlayer(User player) {
         this.player = player;
     }
 
